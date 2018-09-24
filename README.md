@@ -10,7 +10,7 @@ npm install sim-scrollbar
 <div style="overflow: hidden; position: relative; height: 350px; width:300px" id="el">
 const scrollbar = require('sim-scrollbar') 
 
-let scroll = new scrollbar('#chart', 10);
+let scroll = new scrollbar('#el', 10);
 
  ```
  ## refresh
