@@ -1,0 +1,24 @@
+{
+  "name": "sim-scrollbar",
+  "version": "1.0.0",
+  "description": "simulate scrollbar",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wxGoldking/sim-scrollbar.git"
+  },
+  "keywords": [
+    "simulate",
+    "beautify",
+    "scrollbar"
+  ],
+  "author": "wxgoldking",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wxGoldking/sim-scrollbar/issues"
+  },
+  "homepage": "https://github.com/wxGoldking/sim-scrollbar#readme"
+}
