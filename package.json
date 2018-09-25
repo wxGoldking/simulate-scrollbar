@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wxGoldking/sim-scrollbar.git"
+    "url": "git+https://github.com/wxGoldking/simulate-scrollbar.git"
   },
   "keywords": [
     "simulate",
@@ -18,7 +18,7 @@
   "author": "wxgoldking",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/wxGoldking/sim-scrollbar/issues"
+    "url": "https://github.com/wxGoldking/simulate-scrollbar/issues"
   },
-  "homepage": "https://github.com/wxGoldking/sim-scrollbar#readme"
+  "homepage": "https://github.com/wxGoldking/simulate-scrollbar#readme"
 }
