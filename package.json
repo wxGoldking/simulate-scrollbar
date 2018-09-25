@@ -1,5 +1,5 @@
 {
-  "name": "sim-scrollbar",
+  "name": "simulate-scrollbar",
   "version": "1.0.0",
   "description": "simulate scrollbar",
   "main": "index.js",
