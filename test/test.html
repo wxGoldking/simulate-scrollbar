@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <style>
+    *{
+      padding:0;
+      margin: 0;
+    }
+  </style>
   <script src='./scrollbar.js' ></script>
 </head>
 <body>
@@ -41,7 +47,20 @@
   </div>
   <script>
     window.onload = function () {
-      let scroll = new scrollbar('#el', 10)
+      // new 的同时初始化
+      let scroll = new scrollbar('#el', 10);
+      // 设置滚动条样式（样式不支持设置高度）
+      scroll.setStyle({
+        block: {
+          backgroundColor: '#222',
+          borderRadius: '10px',
+        },//滑块样式
+        groove: {
+          backgroundColor: '#aaa',
+          borderRadius: '10px',
+        }//滚动槽样式
+      })
+      console.log(scroll)
     }
   </script>
 </body>

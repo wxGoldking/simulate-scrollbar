@@ -74,7 +74,18 @@ scrollbar = function(e, w) {
 
   });
 
-
+  this.setStyle = function ({block, groove}) {
+    for (const key in block) {
+      if (block.hasOwnProperty(key) && key !== 'height') {
+        _this.scrollBar.style[key] = block[key]
+      }
+    }
+    for (const key in groove) {
+      if (groove.hasOwnProperty(key) && key !== 'height') {
+        _this.scrollBarHolder.style[key] = groove[key]
+      }
+    }
+  }
 
   this.refresh = function() {
       let innerHeight = _this.orgPar.children[0].clientHeight, outerHeight = _this.orgPar.clientHeight;
@@ -93,6 +104,13 @@ scrollbar = function(e, w) {
     _this.scrollBarHolder.style.top = 0;//滑动槽位置
 
   };
+
     _this.init();
     _this.refresh()
+
 };
+
+
+
+
+

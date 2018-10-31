@@ -40,7 +40,21 @@ npm install simulate-scrollbar
   </div>
 const scrollbar = require('simulate-scrollbar')
 
-let scroll = new scrollbar('#el', 10);
+let scroll = new scrollbar('#el', 10);//通过第一个参数选取dom，第二个参数设置滚动条宽度
+
+ ```
+  ## setStyle
+// 设置滚动条样式（样式不支持设置高度）
+scroll.setStyle({
+  block: {
+    backgroundColor: '#222',
+    borderRadius: '10px',
+  },//滑块样式
+  groove: {
+    backgroundColor: '#aaa',
+    borderRadius: '10px',
+  }//滚动槽样式
+})
 
  ```
  ## refresh
