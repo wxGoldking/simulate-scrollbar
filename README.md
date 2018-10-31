@@ -44,6 +44,7 @@ let scroll = new scrollbar('#el', 10);//通过第一个参数选取dom，第二�
 
  ```
   ## setStyle
+ ```
 // 设置滚动条样式（样式不支持设置高度）
 scroll.setStyle({
   block: {
@@ -55,8 +56,8 @@ scroll.setStyle({
     borderRadius: '10px',
   }//滚动槽样式
 })
-
  ```
+
  ## refresh
  if the length of the contents is changed:
  ```
