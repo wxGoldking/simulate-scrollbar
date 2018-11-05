@@ -40,8 +40,8 @@ npm install simulate-scrollbar
   </div>
 const scrollbar = require('simulate-scrollbar')
 
-let scroll = new scrollbar('#el', 10);//通过第一个参数选取dom，第二个参数设置滚动条宽度
-
+//通过第一个参数选取dom(必填，且必须设置高度或最大高度(最大高度必须为行内样式)，同时设置时最大高度无效)，第二个参数设置滚动条宽度(可缺省，缺省时默认为5px)
+let scroll = new scrollbar('#el', 10);
  ```
   ## setStyle
  ```
@@ -59,7 +59,7 @@ scroll.setStyle({
  ```
 
  ## refresh
- if the length of the contents is changed:
+ if the length of the contents is changed(内容长度发生变化时调用):
  ```
  scroll.refresh()
  ```

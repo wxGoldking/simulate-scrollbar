@@ -1,4 +1,4 @@
-// e为最外层提供滚动条定位的元素的选择器（position = 'relative'，定高，overflow hidden）；
+// e为最外层提供滚动条定位的元素的选择器（position = 'relative'，定高或给定最大高度，overflow hidden）；
 // 中间层为一个dom用来滚动,包裹滚动槽和滚动滑块
 //最内层必须为一个dom元素包裹；
 scrollbar = function(e, w) {
@@ -12,8 +12,11 @@ scrollbar = function(e, w) {
 
 
   var _this = this;
-  document.querySelector(e).style.position = 'relative';
-  this.orgPar = document.querySelector(e).children[0];
+  this.element = document.querySelector(e);
+  this.height = this.element.style.height;
+  this.maxHeight = this.element.style.maxHeight;
+  this.element.style.position = 'relative';
+  this.orgPar = this.element.children[0];
   this.init = function() {
     this.orgPar.style.cssText = `height:100%;overflow-y:auto;overflow-x:hidden;padding-right: ${
       this.sbw + 20
@@ -88,16 +91,20 @@ scrollbar = function(e, w) {
   }
 
   this.refresh = function() {
-      let innerHeight = _this.orgPar.children[0].clientHeight, outerHeight = _this.orgPar.clientHeight;
-      if(innerHeight <= outerHeight){
-          _this.showScrollBar = false;
-          _this.scrollBarHolder.style.display = `${_this.showScrollBar ? "block" : "none"}`;
-          return;
-      }
+    if(!_this.height && _this.maxHeight) {
+      _this.element.style.height = ''
+      _this.element.style.height = _this.element.clientHeight > _this.maxHeight  ? _this.maxHeight + 'px' : _this.element.clientHeight + 'px';
+    }
+    let innerHeight = _this.orgPar.children[0].clientHeight, outerHeight = _this.orgPar.clientHeight;
+    if(innerHeight <= outerHeight){
+      _this.showScrollBar = false;
+      _this.scrollBarHolder.style.display = `${_this.showScrollBar ? "block" : "none"}`;
+      return;
+    }
     _this.showScrollBar = true;
     _this.scrollBarHolder.style.display = `${_this.showScrollBar ? "block" : "none"}`;
     let scrollBarHeight = outerHeight/(innerHeight);
-     _this.scrollBar.style.height = scrollBarHeight *100 + '%';
+    _this.scrollBar.style.height = scrollBarHeight *100 + '%';
 
     _this.orgPar.scrollTop = 0;//滚动位置
     _this.scrollBar.style.top = 0;//滑块

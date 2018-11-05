@@ -14,29 +14,9 @@
   <script src='./scrollbar.js' ></script>
 </head>
 <body>
-  <div style="overflow: hidden; position: relative; height: 350px; width:300px" id="el">
+  <div style="overflow: hidden; position: relative; width:300px; max-height: 350px" id="el">
     <div>
       <ul>
-        <li>sgfdgdsfg</li>
-        <li>sgfdgdsfg</li>
-        <li>sgfdgdsfg</li>
-        <li>sgfdgdsfg</li>
-        <li>sgfdgdsfg</li>
-        <li>sgfdgdsfg</li>
-        <li>sgfdgdsfg</li>
-        <li>sgfdgdsfg</li>
-        <li>sgfdgdsfg</li>
-        <li>sgfdgdsfg</li>
-        <li>sgfdgdsfg</li>
-        <li>sgfdgdsfg</li>
-        <li>sgfdgdsfg</li>
-        <li>sgfdgdsfg</li>
-        <li>sgfdgdsfg</li>
-        <li>sgfdgdsfg</li>
-        <li>sgfdgdsfg</li>
-        <li>sgfdgdsfg</li>
-        <li>sgfdgdsfg</li>
-        <li>sgfdgdsfg</li>
         <li>sgfdgdsfg</li>
         <li>sgfdgdsfg</li>
         <li>sgfdgdsfg</li>
@@ -45,6 +25,8 @@
       </ul>
     </div>
   </div>
+  <button id="addButton"> add</button>
+  <button id="delButton"> del</button>
   <script>
     window.onload = function () {
       // new 的同时初始化
@@ -60,7 +42,20 @@
           borderRadius: '10px',
         }//滚动槽样式
       })
-      console.log(scroll)
+
+      document.querySelector('#addButton').onclick = function(){
+        let li = document.createElement('li');
+        li.innerHTML = 'aaaaaaaaaaaaaaaaaa';
+        document.querySelector('ul').append(li);
+        scroll.refresh()
+      }
+      document.querySelector('#delButton').onclick = function(){
+        let ul = document.querySelector('ul'),
+            lis = ul.querySelectorAll('li');
+        if(!lis.length) return;
+        ul.removeChild(lis[lis.length - 1])
+        scroll.refresh()
+      }
     }
   </script>
 </body>
