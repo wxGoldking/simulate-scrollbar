@@ -58,6 +58,15 @@ scroll.setStyle({
 })
  ```
 
+ ## setOption
+ set Option(设置属性api):
+ ```
+//dirtion bottom or top : refresh 时滚动的方向(底部或顶部) When refresh scrolling to the dirtion(bottom or top)
+ scroll.setOption({
+   dirtion: 'bottom',
+ })
+ ```
+
  ## refresh
  if the length of the contents is changed(内容长度发生变化时调用):
  ```
