@@ -41,12 +41,13 @@
     </div>
   </div>
   <button id="addButton"> add</button>
+  <button id="addButtonTop"> addTop</button>
   <button id="delButton"> del</button>
   <script>
     window.onload = function () {
       // new 的同时初始化
       let scroll = new scrollbar('#el', 10);
-      scroll.setOption({dirtion: 'bottom'})
+      scroll.setOption({dirtion: 'none'})
       // 设置滚动条样式（样式不支持设置高度）
       scroll.setStyle({
         block: {
@@ -64,6 +65,12 @@
         li.innerHTML = 'aaaaaaaaaaaaaaaaaa';
         document.querySelector('ul').append(li);
         scroll.refresh()
+      }
+      document.querySelector('#addButtonTop').onclick = function(){
+        let li = document.createElement('li');
+        li.innerHTML = 'aaaaaaaaaaaaaaaaaa';
+        document.querySelector('ul').insertBefore(li, document.querySelector('ul').firstChild);
+        scroll.refresh(true)
       }
       document.querySelector('#delButton').onclick = function(){
         let ul = document.querySelector('ul'),

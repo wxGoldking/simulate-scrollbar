@@ -17,7 +17,8 @@ scrollbar = function(e, w) {
   this.maxHeight = this.element.style.maxHeight;
   this.element.style.position = 'relative';
   this.orgPar = this.element.children[0];
-  this.dirtion = 'top';
+  this.dirtion = '';
+  this.preStatus = {};
   this.setOption = function ({dirtion}){
     _this.dirtion = dirtion;
   }
@@ -77,6 +78,13 @@ scrollbar = function(e, w) {
     let innerHeight = _this.orgPar.children[0].clientHeight, outerHeight = _this.orgPar.clientHeight;
     let scrollBarHeight = _this.scrollBar.clientHeight;
     let percent = _this.orgPar.scrollTop/(innerHeight-outerHeight);//滚动滑块位置百分比
+    //存储滑动状态，位置
+    _this.preStatus = {
+      top: _this.orgPar.scrollTop,
+      bottom: innerHeight - outerHeight - _this.orgPar.scrollTop,
+      innerHeight: innerHeight,
+      outerHeight: outerHeight
+    }
     _this.scrollBar.style.top = percent*100*(outerHeight-scrollBarHeight)/(outerHeight) + "%";//滚动滑块位置
 
   });
@@ -94,11 +102,12 @@ scrollbar = function(e, w) {
     }
   }
 
-  this.refresh = function() {
+  this.refresh = function(refreshDir) {
     if(!_this.height && _this.maxHeight) {
       _this.element.style.height = ''
       _this.element.style.height = _this.element.clientHeight > _this.maxHeight  ? _this.maxHeight + 'px' : _this.element.clientHeight + 'px';
     }
+
     let innerHeight = _this.orgPar.children[0].clientHeight, outerHeight = _this.orgPar.clientHeight;
     if(innerHeight <= outerHeight){
       _this.showScrollBar = false;
@@ -109,7 +118,17 @@ scrollbar = function(e, w) {
     _this.scrollBarHolder.style.display = `${_this.showScrollBar ? "block" : "none"}`;
     let scrollBarHeight = outerHeight/(innerHeight);
     _this.scrollBar.style.height = scrollBarHeight *100 + '%';
-    _this.orgPar.scrollTop = _this.dirtion === 'bottom' ? 9999999999 : 0 ;//滚动位置
+
+    //默认内容变化滚动到顶部
+    let positionTop = 0;
+    //内容变化滚动到底部
+    if(_this.dirtion === 'bottom') positionTop = 9999999999;
+    //内容变化不滚动
+    if(_this.dirtion === 'none') {
+      !refreshDir && (positionTop = _this.preStatus.top);// 内容从上部变化，
+      refreshDir && (positionTop = innerHeight - _this.preStatus.innerHeight + _this.preStatus.top) // 内容从底部变化，
+    }
+    _this.orgPar.scrollTop = positionTop ;//滚动位置
     // _this.scrollBar.style.top = 0;//滑块
     // _this.scrollBarHolder.style.top = 0;//滑动槽位置
 

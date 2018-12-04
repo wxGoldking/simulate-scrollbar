@@ -63,12 +63,14 @@ scroll.setStyle({
  ```
 //dirtion bottom or top : refresh 时滚动的方向(底部或顶部) When refresh scrolling to the dirtion(bottom or top)
  scroll.setOption({
-   dirtion: 'bottom',
+   dirtion: 'bottom',//bottom底部， 默认top, none表示绝对滚动位置不变 ('Bottom', default 'top', 'none' indicates that the absolute scrolling position is unchanged)
  })
  ```
 
  ## refresh
  if the length of the contents is changed(内容长度发生变化时调用):
  ```
- scroll.refresh()
+ //The 'refresh' parameter is valid when dirtion is none, true means that the content is reduced or inserted from the top, false or not passed by default means that the content is reduced or inserted from the bottom('refresh' 参数在 dirtion为none 时有效，true表示内容由顶部减少或插入，false 或默认不传表示内容由底部减少或插入)
+
+ scroll.refresh(refresh)
  ```
