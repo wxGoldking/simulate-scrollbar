@@ -40,6 +40,10 @@ npm install simulate-scrollbar
   </div>
 const scrollbar = require('simulate-scrollbar')
 
+or import scrollbar from 'simulate-scrollbar'
+
+or <script src='/dist/index.js' ></script>
+
 //通过第一个参数选取dom(必填，且必须设置高度或最大高度(最大高度必须为行内样式)，同时设置时最大高度无效)，第二个参数设置滚动条宽度(可缺省，缺省时默认为5px)
 let scroll = new scrollbar('#el', 10);
  ```
